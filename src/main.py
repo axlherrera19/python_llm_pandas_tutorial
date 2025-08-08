@@ -13,7 +13,14 @@ import pandas as pd
 
 app = FastAPI()
 
-@app.post("/get-statistics")
+
+
+@app.get("/hello")
+async def hello():
+    return {"message": "Hello, World!"}
+
+
+@app.post("/calculate-statistics")
 async def upload_csv(file: UploadFile = File(...)):
     if file.content_type != "text/csv":
         return {"error": "El archivo debe ser un CSV"}
